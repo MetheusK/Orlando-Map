@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orlando Trip Map 2026 — 올랜도 여행 지도 & 파크 코스</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-badge">ORL 2026</span>
+      <div>
+        <h1>올랜도 여행 인터랙티브 맵</h1>
+        <p class="brand-sub">공항 · 내 숙소 · 리조트 · 테마파크 &amp; 필수 어트랙션 코스</p>
+      </div>
+    </div>
+
+    <div class="topbar-controls" id="overview-controls">
+      <div class="filter-pills" role="group" aria-label="카테고리 필터">
+        <button class="pill active" data-filter="all">전체</button>
+        <button class="pill" data-filter="airport">✈️ 공항</button>
+        <button class="pill" data-filter="stay">🏨 숙소·리조트</button>
+        <button class="pill" data-filter="disney">🏰 디즈니</button>
+        <button class="pill" data-filter="universal">⚡ 유니버셜</button>
+        <button class="pill" data-filter="marine">🐬 코브·씨월드</button>
+      </div>
+      <button id="btn-layer-toggle" class="btn-secondary" title="일반 지도 / 위성 지도 전환">
+        🛰️ 위성 지도
+      </button>
+    </div>
+
+    <div class="topbar-controls hidden" id="park-controls">
+      <button id="btn-back-overview" class="btn-primary">
+        ← 올랜도 전체 지도로 돌아가기
+      </button>
+      <button id="btn-layer-toggle-park" class="btn-secondary">
+        🛰️ 위성 지도
+      </button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="map-section">
+      <div id="map"></div>
+      <div class="map-floating-card" id="map-floating-info">
+        <span class="dot-indicator"></span>
+        <span id="floating-status-text">놀이공원 핀을 누르면 파크 상세 지도와 필수 코스가 열립니다.</span>
+      </div>
+    </section>
+
+    <aside class="sidebar" id="sidebar">
+      <!-- Overview Mode -->
+      <div id="overview-panel" class="panel-content">
+        <div class="my-stay-banner" id="my-stay-banner">
+          <div class="stay-label">⭐ 현재 선택한 내 숙소</div>
+          <div class="stay-name" id="my-stay-name">Rosen Inn Lake Buena Vista</div>
+          <div class="stay-meta" id="my-stay-meta">아래 숙소 카드에서 "내 숙소로 지정"을 눌러 변경할 수 있습니다.</div>
+        </div>
+
+        <div class="section-header">
+          <h2>🎡 놀이공원 &amp; 마린 파크 (클릭 시 상세 지도)</h2>
+        </div>
+        <div class="card-list" id="park-list"></div>
+
+        <div class="section-header">
+          <h2>🏨 숙소 &amp; 주요 리조트</h2>
+        </div>
+        <div class="card-list" id="stay-list"></div>
+
+        <div class="section-header">
+          <h2>✈️ 공항</h2>
+        </div>
+        <div class="card-list" id="airport-list"></div>
+      </div>
+
+      <!-- Park Detail Mode -->
+      <div id="park-panel" class="panel-content hidden">
+        <div class="park-hero" id="park-hero">
+          <div class="park-badge-row">
+            <span class="park-category-tag" id="park-category-tag">DISNEY</span>
+            <span class="park-distance-tag" id="park-distance-tag">숙소에서 약 15분</span>
+          </div>
+          <h2 id="park-title">파크 이름</h2>
+          <p class="park-subtitle" id="park-subtitle">영문명</p>
+          <div class="park-hours" id="park-hours">운영시간</div>
+        </div>
+
+        <div class="course-box">
+          <h3>🧭 추천 공략 코스</h3>
+          <p id="park-course-desc"></p>
+          <div class="park-tips" id="park-tips"></div>
+        </div>
+
+        <div class="section-header">
+          <h3>⭐ 꼭 가야 하는 어트랙션 (순서대로 클릭)</h3>
+        </div>
+        <div class="ride-list" id="ride-list"></div>
+      </div>
+    </aside>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
