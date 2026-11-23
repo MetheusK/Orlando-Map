@@ -11,12 +11,21 @@ const AIRPORTS = [
 
 const STAYS = [
   {
+    id: 'rosen-intl',
+    name: 'Rosen Inn International (전반 4박 I-Drive)',
+    enName: 'I-Drive 북쪽 가성비 숙소 (유니버셜·코브·씨월드용)',
+    category: 'stay',
+    coords: [28.4514, -81.4724],
+    priceNote: '4박 약 34만 원대 (1박 ₩8.6만)',
+    summary: '유니버셜(5분)·에픽(5분)·코브/씨월드(10분) 초근접 I-Drive 가성비 숙소.',
+  },
+  {
     id: 'rosen-lbv',
-    name: 'Rosen Inn Lake Buena Vista',
-    enName: 'Lake Buena Vista 가성비 숙소',
+    name: 'Rosen Inn Lake Buena Vista (후반 5박/9박 LBV)',
+    enName: 'Lake Buena Vista 남쪽 가성비 숙소 (디즈니용)',
     category: 'stay',
     coords: [28.3806, -81.5008],
-    priceNote: '7박 약 62만 원대 (아고다 기준)',
+    priceNote: '5박 약 43만 원대 / 9박 약 77만 원대',
     summary: '디즈니 스프링스 바로 옆 가성비 1순위 외부 호텔. 디즈니·코브·유니버셜 중간 거점.',
   },
   {
