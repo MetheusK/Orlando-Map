@@ -394,30 +394,73 @@ initMap();
 bindEvents();
 renderOverview();
 
+let activeOutfitFilter = 'all';
+
+function renderDisneyboundTabs() {
+  const tabsEl = document.getElementById('disneybound-tabs');
+  if (!tabsEl || typeof DISNEYBOUND_SETS === 'undefined') return;
+  const tabs = [{ id: 'all', label: '전체 보기' }].concat(
+    DISNEYBOUND_SETS.map((s) => ({ id: s.id, label: s.shortLabel }))
+  );
+  tabsEl.innerHTML = tabs
+    .map(
+      (t) =>
+        `<button class="modal-tab ${activeOutfitFilter === t.id ? 'active' : ''}" data-outfit-tab="${t.id}">${t.label}</button>`
+    )
+    .join('');
+
+  tabsEl.querySelectorAll('.modal-tab').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeOutfitFilter = btn.dataset.outfitTab;
+      renderDisneyboundTabs();
+      renderDisneyboundModal();
+    });
+  });
+}
+
 function renderDisneyboundModal() {
   const container = document.getElementById('disneybound-list');
   if (!container || typeof DISNEYBOUND_SETS === 'undefined') return;
   container.innerHTML = '';
 
-  DISNEYBOUND_SETS.forEach((set) => {
+  const filtered =
+    activeOutfitFilter === 'all'
+      ? DISNEYBOUND_SETS
+      : DISNEYBOUND_SETS.filter((s) => s.id === activeOutfitFilter);
+
+  filtered.forEach((set) => {
     const section = document.createElement('div');
     section.className = 'outfit-set';
-    const cardsHtml = set.items
-      .map(
-        (item) => `
-      <div class="product-card">
-        <div class="product-img-wrap">
-          <img src="${item.img}" alt="${item.name}" referrerpolicy="no-referrer" loading="lazy" />
-          <span class="product-role">${item.role}</span>
-          <span class="product-store">${item.store}</span>
-        </div>
-        <div class="product-info">
-          <div class="product-name">${item.name}</div>
-          <div class="product-price">${item.price}</div>
-          <a class="product-link" href="${item.url}" target="_blank" rel="noopener noreferrer">상품 보러가기 ↗</a>
-        </div>
-      </div>`
-      )
+
+    const optionsHtml = set.options
+      .map((opt) => {
+        const cardsHtml = opt.items
+          .map(
+            (item) => `
+          <div class="product-card">
+            <div class="product-img-wrap">
+              <img src="${item.img}" alt="${item.name}" referrerpolicy="no-referrer" loading="lazy" />
+              <span class="product-role">${item.role}</span>
+              <span class="product-store">${item.store}</span>
+            </div>
+            <div class="product-info">
+              <div class="product-name">${item.name}</div>
+              <div class="product-price">${item.price}</div>
+              <a class="product-link" href="${item.url}" target="_blank" rel="noopener noreferrer">상품 보러가기 ↗</a>
+            </div>
+          </div>`
+          )
+          .join('');
+
+        const noteHtml = opt.note
+          ? `<div class="outfit-note-card"><strong>${opt.note.title}</strong><p>${opt.note.text}</p></div>`
+          : '';
+
+        return `
+          <div class="option-label">${opt.label}</div>
+          <div class="outfit-grid">${cardsHtml}${noteHtml}</div>
+        `;
+      })
       .join('');
 
     section.innerHTML = `
@@ -426,7 +469,7 @@ function renderDisneyboundModal() {
         <span class="outfit-set-park">${set.parkBadge}</span>
       </div>
       <div class="outfit-set-tip">💡 ${set.tip}</div>
-      <div class="outfit-grid">${cardsHtml}</div>
+      ${optionsHtml}
     `;
     container.appendChild(section);
   });
@@ -439,6 +482,7 @@ function renderDisneyboundModal() {
   if (!modal || !openBtn || !closeBtn) return;
 
   openBtn.addEventListener('click', () => {
+    renderDisneyboundTabs();
     renderDisneyboundModal();
     modal.classList.remove('hidden');
   });

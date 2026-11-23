@@ -790,3 +790,67 @@ body {
 .product-link:hover {
   background: var(--primary-hover);
 }
+
+.modal-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 12px 22px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+
+.modal-tab {
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.modal-tab:hover {
+  border-color: #9333ea;
+}
+
+.modal-tab.active {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  color: #fff;
+}
+
+.option-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: #4c1d95;
+  margin: 12px 0 8px;
+  padding-left: 8px;
+  border-left: 3px solid #7c3aed;
+}
+
+.outfit-note-card {
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 14px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.outfit-note-card strong {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.outfit-note-card p {
+  font-size: 12px;
+  color: #475569;
+  line-height: 1.45;
+}
