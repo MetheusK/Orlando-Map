@@ -675,11 +675,27 @@ const DISNEYBOUND_SETS = [
     shortLabel: '🩵 자스민&알라딘',
     title: '🩵 자스민 & 알라딘 풀코디 (12/12 생일 추천)',
     parkBadge: '엡콧 추천',
-    tip: '밋밋한 민트 정장 바지는 전혀 자스민 느낌이 안 나므로 제외했습니다! 여자는 발목이 조여진 터쿼이즈 배기/조거 팬츠 + 오프숄더 크롭탑으로 실루엣을 살리고, 남자는 흰 셔츠 위에 보라색 조끼(또는 니트) + 베이지 치노팬츠를 매치하세요.',
+    tip: '여자는 발목 시보리가 있는 터쿼이즈/민트 벌룬·조거 팬츠 + 오프숄더 크롭탑(올려주신 커플 사진 실루엣!), 남자는 흰 티/셔츠 + 보라색 조끼(또는 니트) + 크림 베이지 파라슈트 팬츠 + 버건디 비니로 맞추세요!',
     options: [
       {
-        label: '옵션 A: 알라딘 조끼 레이어드 (흰 셔츠 + 보라 조끼 + 베이지 하의)',
+        label: '옵션 A: 가성비 자스민(오프숄더 크롭 + 조거) & 알라딘 조끼 풀세트',
         items: [
+          {
+            role: '여자 상의 · 자스민 오프숄더',
+            store: 'G마켓',
+            name: '민트색 크롭 단추 오프숄더 상의',
+            price: '24,660원',
+            img: 'https://gdimg.gmarket.co.kr/4589268116/still/600?ver=1794037410',
+            url: 'https://item.gmarket.co.kr/Item?goodscode=4589268116',
+          },
+          {
+            role: '여자 하의 · 자스민 조거/카고',
+            store: 'G마켓',
+            name: '와이드 밴딩 카고 조거팬츠 (민트)',
+            price: '14,490원',
+            img: 'https://gdimg.gmarket.co.kr/4237461346/still/600?ver=1792514732',
+            url: 'https://item.gmarket.co.kr/Item?goodscode=4237461346',
+          },
           {
             role: '남자 이너 · 흰 셔츠',
             store: '스파오',
@@ -704,23 +720,27 @@ const DISNEYBOUND_SETS = [
             img: 'https://spao-item.elandrs.com/r/image/item/2026-05-14/8509af36-3abb-4fb4-be97-379d1a42a634.jpg',
             url: 'https://www.spao.com/i/item?itemNo=2605001656&lowerVendNo=LV26000002',
           },
-          {
-            role: '남자 하의 · 벌룬핏 (라이트베이지)',
-            store: '스파오',
-            name: '[COOL] 벌룬 와이드 코튼 팬츠 (라이트베이지)',
-            price: '29,900원',
-            img: 'https://spao-item.elandrs.com/r/image/item/2026-06-19/1ec33d17-3ff3-47d5-b420-817d21226fc7.jpg',
-            url: 'https://www.spao.com/i/item?itemNo=2606009410&lowerVendNo=LV26000002',
-          },
         ],
-        note: {
-          title: '👗 여자 자스민 실루엣 추천 (얼굴 베일 X)',
-          text: '정장 슬랙스 대신 발목 시보리가 있는 "터쿼이즈/민트 하렘(배기) 팬츠" + "터쿼이즈 오프숄더 크롭탑(또는 골드 포인트 블라우스)" + 골드 링 귀걸이 조합이 자스민 느낌을 200% 살려줍니다. (에이블리/지그재그/쉬인에서 "하렘 팬츠" 검색 권장)',
-        },
       },
       {
-        label: '옵션 B: 남자 보라색 니트 단품 버전 (12월 저녁 보온용)',
+        label: '옵션 B: 무신사 청록 긴팔 오프숄더 + 터쿼이즈 벌룬 조거 (12월 저녁 보온용)',
         items: [
+          {
+            role: '여자 상의 · 청록 오프숄더',
+            store: '무신사',
+            name: '레터리 오프숄더 타이 롱슬리브 (블루그린)',
+            price: '37,170원',
+            img: 'https://image.msscdn.net/images/goods_img/20260324/6183402/6183402_17744408636844_500.jpg',
+            url: 'https://www.musinsa.com/products/6183402',
+          },
+          {
+            role: '여자 하의 · 터쿼이즈 벌룬 조거',
+            store: '무신사',
+            name: '웨이브걸 Leon Jogger Pants (민트/터쿼이즈)',
+            price: '43,740원',
+            img: 'https://image.msscdn.net/images/goods_img/20260820/7115722/7115722_17872982140135_500.jpg',
+            url: 'https://www.musinsa.com/products/7115722',
+          },
           {
             role: '남자 상의 · 퍼플 니트',
             store: '쿠팡',
@@ -730,12 +750,12 @@ const DISNEYBOUND_SETS = [
             url: 'https://www.coupang.com/vp/products/2145880725?itemId=3643712821&vendorItemId=71629228323',
           },
           {
-            role: '남자 하의 · 파라슈트 (S/L 재고)',
+            role: '남자 하의 · 벌룬핏 (라이트베이지)',
             store: '스파오',
-            name: '와이드 파라슈트 팬츠 (RE) (베이지, S/L)',
+            name: '[COOL] 벌룬 와이드 코튼 팬츠 (라이트베이지)',
             price: '29,900원',
-            img: 'https://spao-item.elandrs.com/r/image/item/2026-06-15/6a0fe5bd-ee10-41fb-a46e-743c84c7212e.jpg',
-            url: 'https://www.spao.com/i/item?itemNo=2606008337&lowerVendNo=LV26000002',
+            img: 'https://spao-item.elandrs.com/r/image/item/2026-06-19/1ec33d17-3ff3-47d5-b420-817d21226fc7.jpg',
+            url: 'https://www.spao.com/i/item?itemNo=2606009410&lowerVendNo=LV26000002',
           },
         ],
       },
