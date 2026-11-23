@@ -47,6 +47,9 @@
   <main class="workspace">
     <section class="map-section">
       <div id="map"></div>
+      <button id="btn-disneybound" class="btn-disneybound" type="button">
+        👗 디즈니바운드 코디 추천
+      </button>
       <div class="map-floating-card" id="map-floating-info">
         <span class="dot-indicator"></span>
         <span id="floating-status-text">놀이공원 핀을 누르면 파크 상세 지도와 필수 코스가 열립니다.</span>
@@ -103,6 +106,20 @@
       </div>
     </aside>
   </main>
+
+  <!-- Disneybound Outfit Modal -->
+  <div id="disneybound-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h2 id="modal-title">👗 파크별 디즈니바운드 &amp; 코스프레 코디 추천</h2>
+          <p class="modal-sub">만 14세 이상 게이트 100% 통과 · 놀이기구 탑승 OK · 가성비 아이템 매칭 (1~3만 원대)</p>
+        </div>
+        <button id="btn-close-modal" class="modal-close" type="button" aria-label="닫기">✕</button>
+      </div>
+      <div class="modal-body" id="disneybound-list"></div>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="./data.js"></script>

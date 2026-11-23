@@ -614,3 +614,110 @@ const PARKS = [
     ],
   },
 ];
+
+const DISNEYBOUND_SETS = [
+  {
+    id: 'tangled',
+    title: '💜 라푼젤 & 플린 라이더 커플 코디',
+    parkBadge: '매직 킹덤 추천',
+    tip: '연보라 미디 원피스(속바지 필수)는 일반 파티 원피스라 게이트 100% 통과! 남자친구는 흰 셔츠 위에 네이비 조끼 + 갈색 크로스백을 메면 플린 라이더 느낌과 짐 보관을 동시에 잡습니다.',
+    items: [
+      {
+        role: '여자 · 라푼젤',
+        store: 'SHEIN',
+        name: '라벤더 스퀘어넥 퍼프 미디 원피스',
+        price: '16,397원',
+        img: 'https://img.ltwebstatic.com/v4/j/pi/2025/07/07/22/1751874511a85193697a65ebf3d2be3420f51ba063_thumbnail_900x.webp',
+        url: 'https://kr.shein.com/Elenzga-Women-s-Lavender-Elegant-Romantic-Summer-Wedding-Garden-Party-Bachelorette-Dress-Simple-Commuting-Business-Casual-Square-Neck-Ruffle-Hem-Puff-Sleeve-p-119595451.html',
+      },
+      {
+        role: '남자 · 플린 조끼',
+        store: '쿠팡',
+        name: '엠엔씨 남녀공용 딥V넥 사계절 조끼 (네이비)',
+        price: '12,800원',
+        img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2025/02/19/18/0/90dab01c-ef0e-4781-b672-bc06cddac91b.jpg',
+        url: 'https://www.coupang.com/vp/products/6787735484?itemId=15983053521&vendorItemId=91968992248',
+      },
+      {
+        role: '남자 · 플린 가방',
+        store: 'SHEIN',
+        name: '캔버스 빈티지 크로스바디 메신저백 (브라운)',
+        price: '15,990원',
+        img: 'https://img.ltwebstatic.com/images3_spmp/2024/11/07/85/1730968472ebd837e1c88e77e7b168462767a45a6a_thumbnail_900x.webp',
+        url: 'https://kr.shein.com/peach-tree-1pc-Fashionable-Canvas-Crossbody-Bag-Messenger-Bag-Shoulder-Bag-Casual-Sling-Bag-Mini-Crossbody-Bag-Suitable-For-Halloween-Christmas-Gift-For-Men-Men-Bag-Vacation-Travel-Essentials-Dad-Gifts-Side-Bags-For-Men-Tote-Bag-Funny-Gifts-Valentine-s-Day-Holiday-Essentials-Bag-For-Men-Camping-Sling-Bag-For-Men-Summer-Brown-Bag-Back-To-School-Summer-Bag-Springbreak-Bag-Pack-Cross-Body-Bag-School-Supplies-Vintage-Canvas-Tote-Bag-Phone-Bag-Easter-p-47764217.html',
+      },
+    ],
+  },
+  {
+    id: 'aladdin',
+    title: '🩵 자스민 & 알라딘 커플 코디 (12/12 생일 추천)',
+    parkBadge: '엡콧 추천',
+    tip: '얼굴 베일·긴 망토 없이 민트/청록 와이드 팬츠 + 흰 크롭탑/블라우스로 맞추면 놀이기구 타기도 편하고 디즈니 게이트도 100% 통과합니다. 남자는 흰 티 위에 보라색 니트나 조끼를 매치하세요!',
+    items: [
+      {
+        role: '여자 · 자스민 팬츠',
+        store: '쿠팡',
+        name: '구디프 여성용 하이웨스트 와이드 핀턱 슬랙스 (민트)',
+        price: '29,800원',
+        img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/rs_quotation_api/zhmmu1sa/b29ed69a180c412c944cb1c845cef009.jpg',
+        url: 'https://www.coupang.com/vp/products/9680238108?itemId=28946454706&vendorItemId=95877215091',
+      },
+      {
+        role: '남자 · 알라딘 니트',
+        store: '쿠팡',
+        name: '해리슨 남성용 14컬러 캐시라이크 니트 (퍼플)',
+        price: '27,800원',
+        img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/238090865400567-8bb574da-3be1-4ac6-b67c-cd4f7b58eca4.jpg',
+        url: 'https://www.coupang.com/vp/products/2145880725?itemId=3643712821&vendorItemId=71629228323',
+      },
+      {
+        role: '남녀공용 · 알라딘 조끼',
+        store: '쿠팡',
+        name: '레이디스룸 무지 오버핏 니트 조끼 (라이트퍼플)',
+        price: '16,530원',
+        img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/657x657q90trim/image/vendor_inventory/f0f9/9a82850f3c761cc720920e082bf3159ae43c9fa75fcf75e60e438d2d3ce0.jpg',
+        url: 'https://www.coupang.com/vp/products/6917584157?itemId=16693113546&vendorItemId=89645912045',
+      },
+    ],
+  },
+  {
+    id: 'toystory',
+    title: '🤠 토이스토리 우디 커플 시밀러 룩',
+    parkBadge: '할리우드 스튜디오 추천',
+    tip: '슬링키 독·스타워즈 탈 때 가장 편하고 사진이 잘 나오는 커플 시밀러 룩! 노란 체크 셔츠에 청바지만 입어도 토이스토리 랜드 앞에서 찰떡입니다.',
+    items: [
+      {
+        role: '커플 공용 · 우디 셔츠',
+        store: '스파오 (SPAO)',
+        name: '오버핏 플란넬 셔츠 (옐로우 체크, S~XXL)',
+        price: '36,900원',
+        img: 'https://spao-item.elandrs.com/r/image/oa/2026-10-22/dacf417d-43dd-4d7a-bb3d-9cbb01631d8e.jpg',
+        url: 'https://www.spao.com/i/item?itemNo=2609018218&lowerVendNo=LV26000002',
+      },
+    ],
+  },
+  {
+    id: 'harrypotter',
+    title: '⚡ 해리포터 호그와트 교복 풀 코스프레',
+    parkBadge: '유니버셜 · 에픽 추천',
+    tip: '유니버셜은 성인 풀 코스프레가 공식 허용됩니다! 단, 코스터 탑승 전 높이 14cm 무료 락커에 넣어야 하므로 구김에 강한 가성비 로브/조끼가 좋습니다.',
+    items: [
+      {
+        role: '커플 공용 · 로브+머플러',
+        store: '쿠팡',
+        name: '해리포터 2종 세트 (로브 + 머플러)',
+        price: '13,900원',
+        img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/657x657q90trim/image/vendor_inventory/622a/d6ddf3acdaa6322bfa1b76981836e7caafb5f146d686f0752b7a0d71dbb1.jpg',
+        url: 'https://www.coupang.com/vp/products/9468957140?itemId=28182167261&vendorItemId=95654082782',
+      },
+      {
+        role: '커플 공용 · 니트 조끼',
+        store: '쿠팡',
+        name: '남녀공용 해리포터 기숙사 니트 조끼',
+        price: '11,900원',
+        img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/657x657q90trim/image/vendor_inventory/94b7/c72f9deb5e168ead2ce424ab842197853f143e540aec013ad88d1d41737f.jpg',
+        url: 'https://www.coupang.com/vp/products/7488257866?itemId=19575846136&vendorItemId=86683506838',
+      },
+    ],
+  },
+];

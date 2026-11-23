@@ -393,3 +393,61 @@ function bindEvents() {
 initMap();
 bindEvents();
 renderOverview();
+
+function renderDisneyboundModal() {
+  const container = document.getElementById('disneybound-list');
+  if (!container || typeof DISNEYBOUND_SETS === 'undefined') return;
+  container.innerHTML = '';
+
+  DISNEYBOUND_SETS.forEach((set) => {
+    const section = document.createElement('div');
+    section.className = 'outfit-set';
+    const cardsHtml = set.items
+      .map(
+        (item) => `
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="${item.img}" alt="${item.name}" referrerpolicy="no-referrer" loading="lazy" />
+          <span class="product-role">${item.role}</span>
+          <span class="product-store">${item.store}</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">${item.name}</div>
+          <div class="product-price">${item.price}</div>
+          <a class="product-link" href="${item.url}" target="_blank" rel="noopener noreferrer">상품 보러가기 ↗</a>
+        </div>
+      </div>`
+      )
+      .join('');
+
+    section.innerHTML = `
+      <div class="outfit-set-header">
+        <div class="outfit-set-title">${set.title}</div>
+        <span class="outfit-set-park">${set.parkBadge}</span>
+      </div>
+      <div class="outfit-set-tip">💡 ${set.tip}</div>
+      <div class="outfit-grid">${cardsHtml}</div>
+    `;
+    container.appendChild(section);
+  });
+}
+
+(function bindModalEvents() {
+  const modal = document.getElementById('disneybound-modal');
+  const openBtn = document.getElementById('btn-disneybound');
+  const closeBtn = document.getElementById('btn-close-modal');
+  if (!modal || !openBtn || !closeBtn) return;
+
+  openBtn.addEventListener('click', () => {
+    renderDisneyboundModal();
+    modal.classList.remove('hidden');
+  });
+  closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+    }
+  });
+})();
