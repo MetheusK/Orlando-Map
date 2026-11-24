@@ -504,6 +504,12 @@ body {
 .pin-disney { background: var(--disney); }
 .pin-universal { background: var(--universal); }
 .pin-marine { background: var(--marine); }
+.pin-spot { background: #e11d48; }
+
+.tag-spot {
+  background: #ffe4e6;
+  color: #be123c;
+}
 
 .ride-pin {
   width: 30px;

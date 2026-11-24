@@ -164,6 +164,26 @@ function renderOverviewMarkers() {
     });
   }
 
+  if (shouldShow('spot') && typeof SPOTS !== 'undefined') {
+    SPOTS.forEach((sp) => {
+      const iconEmoji = sp.subType.includes('맛집') ? '🍽️' : sp.subType.includes('야경') || sp.subType.includes('로컬') ? '🌃' : '🛍️';
+      const shortName = sp.name.split('(')[0].trim();
+      const marker = L.marker(sp.coords, {
+        icon: makePinIcon(`${iconEmoji} ${shortName}`, 'pin-spot'),
+      });
+      marker.bindPopup(`
+        <strong>${sp.name}</strong><br/>
+        <small>${sp.subType} · ${sp.hours}</small>
+        <p style="margin:6px 0 0;font-size:12px;">${sp.summary}</p>
+        <p style="margin:4px 0 0;font-size:12px;color:#2563eb;">${estimateDriveText(sp.coords)}</p>
+        <a class="popup-link-btn" href="${getStayGoogleMapsUrl(sp)}" target="_blank" rel="noopener noreferrer">
+          📍 구글 지도에서 보기 ↗
+        </a>
+      `);
+      overviewLayerGroup.addLayer(marker);
+    });
+  }
+
   PARKS.forEach((p) => {
     if (!shouldShow(p.category)) return;
     const pinClass = `pin-${p.category}`;
@@ -190,10 +210,12 @@ function renderOverviewMarkers() {
 function renderOverviewLists() {
   const parkList = document.getElementById('park-list');
   const stayList = document.getElementById('stay-list');
+  const spotList = document.getElementById('spot-list');
   const airportList = document.getElementById('airport-list');
 
   parkList.innerHTML = '';
   stayList.innerHTML = '';
+  if (spotList) spotList.innerHTML = '';
   airportList.innerHTML = '';
 
   const tagMap = {
@@ -260,6 +282,35 @@ function renderOverviewLists() {
         map.flyTo(s.coords, 14, { duration: 0.7 });
       });
       stayList.appendChild(card);
+    });
+  }
+
+  if (shouldShow('spot') && spotList && typeof SPOTS !== 'undefined') {
+    SPOTS.forEach((sp) => {
+      const card = document.createElement('div');
+      card.className = 'item-card';
+      card.innerHTML = `
+        <div class="card-top">
+          <div>
+            <div class="card-title">${sp.name}</div>
+            <div class="card-sub">${sp.hours} · ${sp.enName}</div>
+          </div>
+          <span class="card-tag tag-spot">${sp.subType}</span>
+        </div>
+        <div class="card-actions">
+          <span class="distance-text">${estimateDriveText(sp.coords)}</span>
+          <a class="btn-inline btn-inline-link" href="${getStayGoogleMapsUrl(sp)}" target="_blank" rel="noopener noreferrer">
+            📍 구글 지도 ↗
+          </a>
+        </div>
+      `;
+      card.querySelector('a.btn-inline-link').addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+      card.addEventListener('click', () => {
+        map.flyTo(sp.coords, 15, { duration: 0.7 });
+      });
+      spotList.appendChild(card);
     });
   }
 
