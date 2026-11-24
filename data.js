@@ -11,9 +11,18 @@ const AIRPORTS = [
 
 const STAYS = [
   {
+    id: 'rosen-lbv',
+    name: '⭐ Rosen Inn Lake Buena Vista (확정 · 9박)',
+    enName: '8442 Palm Pkwy · 12/4~13 9박 확정 ($598.70)',
+    category: 'stay',
+    coords: [28.3806, -81.5008],
+    priceNote: '확정! 9박 $598.70 (약 80.3만 원 · 리조트피 0원)',
+    summary: '우리 확정 숙소! 디즈니·코브·씨월드 10~15분, 바인랜드 아울렛 도보 15분(우버 3분), 올리브가든·밀러스에일하우스 도보 6~8분.',
+  },
+  {
     id: 'fairfield-lbv',
     name: 'Fairfield Inn & Suites LBV (Marriott Village)',
-    enName: '8615 Vineland Ave · 무료 조식 + 아울렛 도보 5분 (강력 추천)',
+    enName: '8615 Vineland Ave · 무료 조식 + 아울렛 도보 5분',
     category: 'stay',
     coords: [28.3775, -81.5015],
     priceNote: '12/4~13 9박 ₩151.1만(트립닷컴) · ₩162.3만(부킹 12/1 무료취소) · 조식 무료',
@@ -36,15 +45,6 @@ const STAYS = [
     coords: [28.4514, -81.4724],
     priceNote: '12/4~8 4박 ₩34.3만(아고다)·₩35.8만(야놀자) / 9박 ₩77.5만(아고다)·₩81.8만(야놀자 12/2 무료취소)',
     summary: '유니버셜(5분)·에픽(5분)·코브/씨월드(10분) 초근접 I-Drive 가성비 모텔형 숙소.',
-  },
-  {
-    id: 'rosen-lbv',
-    name: 'Rosen Inn Lake Buena Vista (후반 5박/9박 LBV)',
-    enName: 'Lake Buena Vista 남쪽 가성비 숙소 (디즈니용)',
-    category: 'stay',
-    coords: [28.3806, -81.5008],
-    priceNote: '12/8~13 5박 ₩44.0만(아고다) / ₩44.7만(야놀자) · 9박 ₩77.7만~83.7만',
-    summary: '디즈니 스프링스 바로 옆 가성비 1순위 외부 모텔형 숙소. 리조트피 0원.',
   },
   {
     id: 'all-star-sports',
@@ -1512,5 +1512,25 @@ const SPOTS = [
     coords: [28.4458, -81.4714],
     hours: '매일 11:30 ~ 22:30',
     summary: '아이콘 파크 바로 앞! 파크에서 체력 소모 후 고기 보충하기 최고인 정통 브라질리언 스테이크하우스.',
+  },
+  {
+    id: 'olive-garden-lbv',
+    name: '올리브 가든 LBV (Olive Garden · 숙소 도보 6분)',
+    enName: '12361 S Apopka Vineland Rd · 무제한 수프·샐러드·파스타',
+    category: 'spot',
+    subType: '맛집·도보권',
+    coords: [28.3822, -81.5066],
+    hours: '매일 11:00 ~ 22:00 (금·토 23:00)',
+    summary: 'Rosen Inn LBV 바로 앞 교차로 도보 6분! 무제한 수프·샐러드·갈릭 브레드스틱과 파스타로 가성비 좋은 저녁.',
+  },
+  {
+    id: 'millers-ale-house-lbv',
+    name: '밀러스 에일 하우스 LBV (Miller\'s Ale House · 숙소 도보 8분)',
+    enName: '12371 Winter Garden Vineland Rd · 심야 스포츠 바 & 그릴',
+    category: 'spot',
+    subType: '맛집·도보권',
+    coords: [28.3834, -81.5071],
+    hours: '매일 11:00 ~ 01:00~02:00 (심야 영업)',
+    summary: 'Rosen Inn LBV 도보 8분! 파크에서 밤늦게 돌아와도 치킨 윙·스테이크·버거·맥주를 즐길 수 있는 심야 맛집.',
   },
 ];

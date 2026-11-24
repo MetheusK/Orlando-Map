@@ -28,8 +28,10 @@ function haversineKm([lat1, lon1], [lat2, lon2]) {
 function estimateDriveText(targetCoords) {
   const stay = STAYS.find((s) => s.id === myStayId) || STAYS[0];
   const km = haversineKm(stay.coords, targetCoords);
-  const mins = Math.max(5, Math.round(km * 1.9 + 5));
-  return `내 숙소에서 약 ${km.toFixed(1)}km · 차량/우버 ~${mins}분`;
+  const mins = Math.max(5, Math.round(km * 1.6 + 5));
+  const minUsd = Math.max(7, Math.round(6 + km * 1.15));
+  const maxUsd = Math.max(minUsd + 3, Math.round(9 + km * 1.45));
+  return `숙소에서 ~${km.toFixed(1)}km · 차량 ~${mins}분 (우버 편도 ~$${minUsd}~$${maxUsd})`;
 }
 
 function getMyStay() {

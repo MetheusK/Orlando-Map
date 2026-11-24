@@ -577,19 +577,83 @@ body {
 }
 
 @media (max-width: 960px) {
+  body {
+    height: 100dvh;
+  }
+  .topbar {
+    height: auto;
+    padding: 8px 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+  .brand {
+    gap: 8px;
+  }
+  .brand-badge {
+    font-size: 10px;
+    padding: 4px 7px;
+  }
+  .brand h1 {
+    font-size: 14px;
+  }
+  .brand-sub {
+    display: none;
+  }
+  .topbar-controls {
+    flex-wrap: nowrap;
+    gap: 6px;
+    width: 100%;
+  }
+  .filter-pills {
+    flex: 1;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 5px;
+    padding-bottom: 2px;
+  }
+  .filter-pills::-webkit-scrollbar {
+    display: none;
+  }
+  .pill {
+    white-space: nowrap;
+    padding: 5px 10px;
+    font-size: 11.5px;
+    flex-shrink: 0;
+  }
+  .btn-secondary,
+  .btn-primary {
+    padding: 5px 10px;
+    font-size: 11.5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
   .workspace {
     grid-template-columns: 1fr;
-    grid-template-rows: 52vh 1fr;
+    grid-template-rows: 38dvh 1fr;
   }
   .sidebar {
     border-left: none;
     border-top: 1px solid var(--border);
   }
-  .topbar {
-    height: auto;
-    padding: 10px 14px;
-    flex-direction: column;
-    align-items: flex-start;
+  .panel-content {
+    padding: 12px;
+    gap: 10px;
+  }
+  .floating-btn-group {
+    bottom: 10px;
+    left: 10px;
+    gap: 6px;
+  }
+  .btn-disneybound,
+  .btn-stay-compare {
+    padding: 7px 11px;
+    font-size: 11.5px;
+  }
+  .map-floating-card {
+    display: none;
   }
 }
 
