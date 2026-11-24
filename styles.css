@@ -538,6 +538,38 @@ body {
   cursor: pointer;
 }
 
+.popup-link-btn {
+  display: block;
+  margin-top: 6px;
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  color: #0f172a !important;
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.popup-link-btn:hover {
+  background: #e2e8f0;
+}
+
+.card-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.btn-inline-link {
+  text-decoration: none;
+  background: #f8fafc;
+  color: #0369a1;
+}
+
 @media (max-width: 960px) {
   .workspace {
     grid-template-columns: 1fr;
@@ -555,13 +587,19 @@ body {
   }
 }
 
-/* Bottom-left Disneybound Button */
-.btn-disneybound {
+/* Bottom-left Floating Buttons */
+.floating-btn-group {
   position: absolute;
   bottom: 18px;
   left: 18px;
   z-index: 510;
-  background: linear-gradient(135deg, #9333ea, #ec4899);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.btn-disneybound,
+.btn-stay-compare {
   color: #fff;
   border: 2px solid #fff;
   border-radius: 999px;
@@ -569,8 +607,12 @@ body {
   font-size: 13px;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(147, 51, 234, 0.38);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-disneybound {
+  background: linear-gradient(135deg, #9333ea, #ec4899);
+  box-shadow: 0 8px 20px rgba(147, 51, 234, 0.38);
 }
 
 .btn-disneybound:hover {
@@ -578,8 +620,97 @@ body {
   box-shadow: 0 12px 24px rgba(147, 51, 234, 0.48);
 }
 
+.btn-stay-compare {
+  background: linear-gradient(135deg, #0284c7, #0f766e);
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.35);
+}
+
+.btn-stay-compare:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(2, 132, 199, 0.45);
+}
+
 .map-floating-card {
   bottom: 68px;
+}
+
+/* Stay Compare Modal Content */
+.compare-note-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.compare-note-box ul {
+  margin: 4px 0 0 16px;
+}
+
+.compare-section-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 14px 0 10px;
+}
+
+.compare-table-wrap {
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  text-align: left;
+}
+
+.compare-table th {
+  background: #f1f5f9;
+  color: #1e293b;
+  font-weight: 700;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.compare-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.compare-table tr:last-child td {
+  border-bottom: none;
+}
+
+.compare-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #e0f2fe;
+  color: #0369a1;
+  margin-top: 4px;
+}
+
+.compare-badge.soldout {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.compare-badge.best {
+  background: #dcfce7;
+  color: #15803d;
 }
 
 /* Disneybound Modal */

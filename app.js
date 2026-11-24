@@ -36,6 +36,15 @@ function getMyStay() {
   return STAYS.find((s) => s.id === myStayId) || STAYS[0];
 }
 
+function getStayGoogleMapsUrl(stay) {
+  const cleanName = stay.name
+    .replace(/[가-힣·/0-9+~]+/g, '')
+    .replace(/\(\s*\)/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${cleanName} Orlando FL`)}`;
+}
+
 function makePinIcon(label, className) {
   return L.divIcon({
     className: '',
@@ -138,6 +147,9 @@ function renderOverviewMarkers() {
         <button class="popup-btn" data-set-stay="${s.id}">
           ${isMine ? '⭐ 현재 내 숙소입니다' : '이곳을 내 숙소로 지정'}
         </button>
+        <a class="popup-link-btn" href="${getStayGoogleMapsUrl(s)}" target="_blank" rel="noopener noreferrer">
+          📍 구글 지도에서 보기 ↗
+        </a>
       `);
       marker.on('popupopen', (e) => {
         const btn = e.popup.getElement()?.querySelector('[data-set-stay]');
@@ -226,12 +238,20 @@ function renderOverviewLists() {
           <span class="card-tag tag-stay">숙소</span>
         </div>
         <div class="card-actions">
-          <span class="distance-text">${s.summary.slice(0, 34)}...</span>
-          <button class="btn-inline ${isMine ? 'selected' : ''}">
-            ${isMine ? '선택됨' : '내 숙소로 지정'}
-          </button>
+          <span class="distance-text">${s.summary.slice(0, 28)}...</span>
+          <div class="card-btn-group">
+            <a class="btn-inline btn-inline-link" href="${getStayGoogleMapsUrl(s)}" target="_blank" rel="noopener noreferrer">
+              📍 구글 지도 ↗
+            </a>
+            <button class="btn-inline ${isMine ? 'selected' : ''}">
+              ${isMine ? '선택됨' : '내 숙소로 지정'}
+            </button>
+          </div>
         </div>
       `;
+      card.querySelector('a.btn-inline-link').addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
       card.querySelector('button').addEventListener('click', (e) => {
         e.stopPropagation();
         setMyStay(s.id);
@@ -484,6 +504,94 @@ function renderDisneyboundModal() {
   openBtn.addEventListener('click', () => {
     renderDisneyboundTabs();
     renderDisneyboundModal();
+    modal.classList.remove('hidden');
+  });
+  closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+    }
+  });
+})();
+
+function renderStayCompareModal() {
+  const body = document.getElementById('stay-compare-body');
+  const sub = document.getElementById('stay-modal-sub');
+  if (!body || typeof STAY_COMPARISON === 'undefined') return;
+  if (sub) sub.textContent = STAY_COMPARISON.updatedAt;
+
+  const notesHtml = STAY_COMPARISON.summaryNotes.map((n) => `<li>${n}</li>`).join('');
+  const planRows = STAY_COMPARISON.plans
+    .map(
+      (p) => `
+      <tr>
+        <td><strong>${p.name}</strong><br><span class="compare-badge">${p.badge}</span></td>
+        <td><strong>${p.lowest}</strong></td>
+        <td>${p.freeCancel}</td>
+        <td>${p.uberEst}</td>
+        <td>${p.note}</td>
+      </tr>`
+    )
+    .join('');
+
+  const disneyRows = STAY_COMPARISON.disneyFiveNights
+    .map((d) => {
+      const cls = d.status === '매진' ? 'soldout' : d.status === '최저가' ? 'best' : '';
+      return `
+      <tr>
+        <td><strong>${d.name}</strong></td>
+        <td>${d.price}</td>
+        <td><span class="compare-badge ${cls}">${d.status}</span></td>
+      </tr>`;
+    })
+    .join('');
+
+  body.innerHTML = `
+    <div class="compare-note-box">
+      <strong>📌 핵심 체크사항</strong>
+      <ul>${notesHtml}</ul>
+    </div>
+    <h3 class="compare-section-title">1. 9박(12/4~13) 숙소 조합 종합 비교 (최저가 vs 무료취소)</h3>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>숙소 조합</th>
+            <th>최저가 조합 (환불불가 포함)</th>
+            <th>전 구간 무료취소 조합</th>
+            <th>예상 우버</th>
+            <th>특징</th>
+          </tr>
+        </thead>
+        <tbody>${planRows}</tbody>
+      </table>
+    </div>
+    <h3 class="compare-section-title">2. 디즈니 공식 리조트 5박(12/8~13) 실시간 순위</h3>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>리조트명</th>
+            <th>5박 총액 (세금·수수료 포함)</th>
+            <th>상태</th>
+          </tr>
+        </thead>
+        <tbody>${disneyRows}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+(function bindStayCompareModalEvents() {
+  const modal = document.getElementById('stay-compare-modal');
+  const openBtn = document.getElementById('btn-stay-compare');
+  const closeBtn = document.getElementById('btn-close-stay-modal');
+  if (!modal || !openBtn || !closeBtn) return;
+
+  openBtn.addEventListener('click', () => {
+    renderStayCompareModal();
     modal.classList.remove('hidden');
   });
   closeBtn.addEventListener('click', () => {

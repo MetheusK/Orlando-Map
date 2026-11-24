@@ -47,9 +47,14 @@
   <main class="workspace">
     <section class="map-section">
       <div id="map"></div>
-      <button id="btn-disneybound" class="btn-disneybound" type="button">
-        👗 디즈니바운드 코디 추천
-      </button>
+      <div class="floating-btn-group">
+        <button id="btn-disneybound" class="btn-disneybound" type="button">
+          👗 디즈니바운드 코디 추천
+        </button>
+        <button id="btn-stay-compare" class="btn-stay-compare" type="button">
+          🏨 숙소 9박 비교표
+        </button>
+      </div>
       <div class="map-floating-card" id="map-floating-info">
         <span class="dot-indicator"></span>
         <span id="floating-status-text">놀이공원 핀을 누르면 파크 상세 지도와 필수 코스가 열립니다.</span>
@@ -119,6 +124,20 @@
       </div>
       <div class="modal-tabs" id="disneybound-tabs"></div>
       <div class="modal-body" id="disneybound-list"></div>
+    </div>
+  </div>
+
+  <!-- Stay Comparison Modal -->
+  <div id="stay-compare-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="stay-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h2 id="stay-modal-title">🏨 9박(12/4~13) 숙소 조합 종합 비교</h2>
+          <p class="modal-sub" id="stay-modal-sub">최저가 vs 무료취소 · 야놀자(NOL) &amp; 구글호텔 실시간 조회</p>
+        </div>
+        <button id="btn-close-stay-modal" class="modal-close" type="button" aria-label="닫기">✕</button>
+      </div>
+      <div class="modal-body" id="stay-compare-body"></div>
     </div>
   </div>
 

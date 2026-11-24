@@ -11,13 +11,22 @@ const AIRPORTS = [
 
 const STAYS = [
   {
+    id: 'courtyard-lbv',
+    name: 'Courtyard Orlando LBV (Marriott Village)',
+    enName: '8623 Vineland Ave · 깔끔한 3.5성급 (9박 통일 / 후반 5박)',
+    category: 'stay',
+    coords: [28.3770, -81.5019],
+    priceNote: '9박 ₩158.3만(무료취소 184.2만) / 5박 ₩86.9만 (야놀자)',
+    summary: '보안 게이트가 있는 메리어트 빌리지 내 실내 복도형 호텔. 무거운 리조트피 없음(Destination Fee ~$5.63/박). 바인랜드 아울렛 바로 옆.',
+  },
+  {
     id: 'rosen-intl',
     name: 'Rosen Inn International (전반 4박 I-Drive)',
     enName: 'I-Drive 북쪽 가성비 숙소 (유니버셜·코브·씨월드용)',
     category: 'stay',
     coords: [28.4514, -81.4724],
-    priceNote: '4박 약 34만 원대 (1박 ₩8.6만)',
-    summary: '유니버셜(5분)·에픽(5분)·코브/씨월드(10분) 초근접 I-Drive 가성비 숙소.',
+    priceNote: '12/4~8 4박 ₩34.3만(아고다)·₩35.8만(야놀자) / 9박 ₩77.5만(아고다)·₩81.8만(야놀자 12/2 무료취소)',
+    summary: '유니버셜(5분)·에픽(5분)·코브/씨월드(10분) 초근접 I-Drive 가성비 모텔형 숙소.',
   },
   {
     id: 'rosen-lbv',
@@ -25,8 +34,8 @@ const STAYS = [
     enName: 'Lake Buena Vista 남쪽 가성비 숙소 (디즈니용)',
     category: 'stay',
     coords: [28.3806, -81.5008],
-    priceNote: '5박 약 43만 원대 / 9박 약 77만 원대',
-    summary: '디즈니 스프링스 바로 옆 가성비 1순위 외부 호텔. 디즈니·코브·유니버셜 중간 거점.',
+    priceNote: '12/8~13 5박 ₩44.0만(아고다) / ₩44.7만(야놀자) · 9박 ₩77.7만~83.7만',
+    summary: '디즈니 스프링스 바로 옆 가성비 1순위 외부 모텔형 숙소. 리조트피 0원.',
   },
   {
     id: 'all-star-sports',
@@ -34,17 +43,17 @@ const STAYS = [
     enName: '디즈니 밸류 리조트',
     category: 'stay',
     coords: [28.3422, -81.5736],
-    priceNote: '1박 약 33~35만 원대',
+    priceNote: '12/8~13 5박 ₩288만 (아고다)',
     summary: '디즈니 무료 셔틀, 30분 조기 입장, 라이트닝 레인 7일 전 예약 혜택.',
   },
   {
     id: 'pop-century',
     name: "Disney's Pop Century Resort",
-    enName: '디즈니 밸류 (스카이라이너)',
+    enName: '디즈니 밸류 (스카이라이너 · 디즈니 리조트 중 최저가)',
     category: 'stay',
     coords: [28.3508, -81.5439],
-    priceNote: '1박 약 40~45만 원대',
-    summary: '엡콧·할리우드 스튜디오와 곤돌라(스카이라이너)로 직결되어 왔다갔다 최고.',
+    priceNote: '12/8~13 5박 ₩233.2만(아고다) / ₩248.5만(야놀자 TDP-586207)',
+    summary: '엡콧·할리우드 스튜디오와 곤돌라(스카이라이너)로 직결. 디즈니 공식 리조트 중 12/8~13 최저가.',
   },
   {
     id: 'dockside',
@@ -52,7 +61,7 @@ const STAYS = [
     enName: '유니버셜 밸류 리조트',
     category: 'stay',
     coords: [28.4586, -81.4665],
-    priceNote: '1박 약 20만 원대',
+    priceNote: '12/4~8 4박 ₩95.5만(야놀자 무료취소) / ₩90.8만(Vio)',
     summary: '유니버셜 기존 2파크·에픽 유니버스 무료 셔틀 + 1시간 조기 입장 포함.',
   },
   {
@@ -1330,3 +1339,58 @@ const DISNEYBOUND_SETS = [
     ],
   },
 ];
+
+const STAY_COMPARISON = {
+  updatedAt: '2026-11-24 실시간 조회 (성인 2인 · 세금 및 봉사료 포함)',
+  summaryNotes: [
+    '디즈니 공식 리조트 중 12/8~13(5박) 최저가는 Pop Century (아고다 ₩2,331,858 / 야놀자 TDP-586207 ₩2,485,311)입니다. (야놀자 중복 페이지 TDP-5728913 290만 원대 주의!)',
+    'Drury Plaza Hotel Orlando (디즈니 스프링스)는 12/4~13 전일정 매진입니다.',
+    'Courtyard Orlando LBV (Marriott Village, 8623 Vineland Ave)는 무거운 리조트피 없이 소액 Destination Fee(~$5.63/박)만 현장 결제될 수 있습니다.',
+    'Dockside · Pop Century · Rosen Inn은 현장 리조트피 0원입니다.',
+  ],
+  plans: [
+    {
+      name: '① Courtyard LBV 9박 통일',
+      badge: '이동 0번 · 깔끔 가성비',
+      lowest: '야놀자 ₩1,583,029 (환불불가)',
+      freeCancel: '야놀자 ₩1,842,081 (12/2 14:00까지)',
+      uberEst: '우버 약 45~50만 원',
+      note: '메리어트 3.5성급 실내 복도형, 8623 Vineland Ave 보안 게이트 단지. 짐 이동 0회.',
+    },
+    {
+      name: '② Dockside 4박 + Courtyard LBV 5박',
+      badge: '유니버셜 얼리 입장',
+      lowest: '₩1,776,686 ~ ₩1,823,844 (Vio 90.8만/야놀자 95.5만 + 야놀자 86.9만)',
+      freeCancel: '야놀자 ₩2,083,795 (Dockside 11/29 + Courtyard 12/6까지)',
+      uberEst: '우버 약 28~30만 원',
+      note: '12/7~8 유니버셜·에픽 1시간 얼리 입장 & 무료 셔틀 확보.',
+    },
+    {
+      name: '③ Dockside 4박 + Pop Century 5박',
+      badge: '풀 리조트 분할',
+      lowest: '₩3,239,995 ~ ₩3,287,153 (Vio/야놀자 + 아고다 233.2만)',
+      freeCancel: '야놀자 ₩3,440,606 (Dockside 11/29 + Pop TDP-586207 12/3까지)',
+      uberEst: '우버 약 25만 원',
+      note: '양쪽 리조트 풀 혜택 + 스카이라이너(엡콧·할리우드 직통).',
+    },
+    {
+      name: '④ Rosen Inn (모텔형 · 4+5박 or 9박 통일)',
+      badge: '초가성비 · 리조트피 0원',
+      lowest: 'Int\'l 9박 아고다 ₩774,944 / LBV 9박 ₩777,406 / 4+5박 아고다 ₩782,996',
+      freeCancel: 'Int\'l 9박 야놀자 ₩818,273 (12/2까지) / LBV 9박 야놀자 ₩836,699 (12/2까지) / 4+5박 야놀자 ₩804,717',
+      uberEst: '우버 약 45~50만 원',
+      note: '외부 복도형 3성급 모텔 구조. 리조트피 0원. Int\'l(북쪽)이나 LBV(남쪽) 9박 통일도 짐 이동 없이 매우 저렴.',
+    },
+  ],
+  disneyFiveNights: [
+    { name: 'Pop Century (밸류 · 스카이라이너)', price: '₩2,331,858 (아고다) / ₩2,485,311 (야놀자 TDP-586207)', status: '최저가' },
+    { name: 'Port Orleans - French Quarter (모더레이트)', price: '₩2,448,349 (클룩)', status: '가성비 모더레이트' },
+    { name: 'Art of Animation (밸류 · 스카이라이너)', price: '₩2,482,320 (아고다)', status: '예약 가능' },
+    { name: 'Coronado Springs (모더레이트)', price: '₩2,574,327 (클룩)', status: '예약 가능' },
+    { name: 'Caribbean Beach (모더레이트)', price: '₩2,871,133 (클룩)', status: '예약 가능' },
+    { name: 'All-Star Sports (밸류)', price: '₩2,879,699 (아고다)', status: '예약 가능' },
+    { name: 'Port Orleans - Riverside (모더레이트)', price: '₩3,357,316 (아고다)', status: '예약 가능' },
+    { name: 'All-Star Music (밸류)', price: '₩3,915,131 (Evendo)', status: '예약 가능' },
+    { name: 'All-Star Movies (밸류)', price: '매진 (Sold Out)', status: '매진' },
+  ],
+};
