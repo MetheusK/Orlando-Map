@@ -56,10 +56,13 @@
       <div id="map"></div>
       <div class="floating-btn-group">
         <button id="btn-disneybound" class="btn-disneybound" type="button">
-          👗 디즈니바운드 코디 추천
+          👗 코디 추천
         </button>
         <button id="btn-stay-compare" class="btn-stay-compare" type="button">
-          🏨 숙소 9박 비교표
+          🏨 숙소 비교
+        </button>
+        <button id="btn-pass-guide" class="btn-pass-guide" type="button">
+          ⚡ 패스·티켓
         </button>
       </div>
       <div class="map-floating-card" id="map-floating-info">
@@ -169,6 +172,20 @@
         <button id="btn-close-stay-modal" class="modal-close" type="button" aria-label="닫기">✕</button>
       </div>
       <div class="modal-body" id="stay-compare-body"></div>
+    </div>
+  </div>
+
+  <!-- Pass & Ticket Guide Modal -->
+  <div id="pass-guide-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="pass-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h2 id="pass-modal-title">⚡ 패스트트랙 · 싱글라이더 · 티켓 가이드</h2>
+          <p class="modal-sub" id="pass-modal-sub">디즈니 LL · 유니버셜 Express · 씨월드 선입장</p>
+        </div>
+        <button id="btn-close-pass-modal" class="modal-close" type="button" aria-label="닫기">✕</button>
+      </div>
+      <div class="modal-body" id="pass-guide-body"></div>
     </div>
   </div>
 

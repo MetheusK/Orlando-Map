@@ -700,6 +700,85 @@ function renderStayCompareModal() {
   });
 })();
 
+function renderPassGuideModal() {
+  const body = document.getElementById('pass-guide-body');
+  const sub = document.getElementById('pass-modal-sub');
+  if (!body || typeof PASS_GUIDE === 'undefined') return;
+  if (sub) sub.textContent = PASS_GUIDE.updatedAt;
+
+  const disneyNotes = PASS_GUIDE.disney.notes.map((n) => `<li>${n}</li>`).join('');
+  const disneyRows = PASS_GUIDE.disney.rows
+    .map(
+      (r) => `
+      <tr>
+        <td><strong>${r.name}</strong></td>
+        <td style="white-space:pre-line;">${r.price}</td>
+        <td>${r.rule}</td>
+      </tr>`
+    )
+    .join('');
+
+  const uniNotes = PASS_GUIDE.universal.notes.map((n) => `<li>${n}</li>`).join('');
+  const uniSingleRows = PASS_GUIDE.universal.singleRider
+    .map(
+      (s) => `
+      <tr>
+        <td><strong>${s.type}</strong></td>
+        <td>${s.items}</td>
+      </tr>`
+    )
+    .join('');
+
+  const marineNotes = PASS_GUIDE.marine.notes.map((n) => `<li>${n}</li>`).join('');
+
+  body.innerHTML = `
+    <h3 class="compare-section-title">${PASS_GUIDE.disney.title}</h3>
+    <div class="compare-note-box"><ul>${disneyNotes}</ul></div>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>패스 종류</th><th>공홈 변동가 (1인)</th><th>핵심 특징 &amp; 추천</th></tr>
+        </thead>
+        <tbody>${disneyRows}</tbody>
+      </table>
+    </div>
+
+    <h3 class="compare-section-title">${PASS_GUIDE.universal.title}</h3>
+    <div class="compare-note-box"><ul>${uniNotes}</ul></div>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>싱글라이더 구분</th><th>해당 어트랙션</th></tr>
+        </thead>
+        <tbody>${uniSingleRows}</tbody>
+      </table>
+    </div>
+
+    <h3 class="compare-section-title">${PASS_GUIDE.marine.title}</h3>
+    <div class="compare-note-box"><ul>${marineNotes}</ul></div>
+  `;
+}
+
+(function bindPassGuideModalEvents() {
+  const modal = document.getElementById('pass-guide-modal');
+  const openBtn = document.getElementById('btn-pass-guide');
+  const closeBtn = document.getElementById('btn-close-pass-modal');
+  if (!modal || !openBtn || !closeBtn) return;
+
+  openBtn.addEventListener('click', () => {
+    renderPassGuideModal();
+    modal.classList.remove('hidden');
+  });
+  closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+    }
+  });
+})();
+
 function renderStrategyModal() {
   const body = document.getElementById('strategy-modal-body');
   if (!body || typeof PASS_STRATEGY === 'undefined') return;
