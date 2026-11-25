@@ -371,6 +371,31 @@ function openPark(parkId) {
   document.getElementById('park-course-desc').textContent = park.courseDesc;
   document.getElementById('park-tips').textContent = park.tips;
 
+  const stratBox = document.getElementById('park-strategy-box');
+  const stratContent = document.getElementById('park-strategy-content');
+  if (stratBox && stratContent && typeof PASS_STRATEGY !== 'undefined') {
+    const matchMap = {
+      'magic-kingdom': 0,
+      'hollywood-studios': 1,
+      'animal-kingdom': 2,
+      epcot: 3,
+      'epic-universe': 4,
+      'islands-of-adventure': 4,
+      'universal-studios': 4,
+    };
+    const idx = matchMap[parkId];
+    if (idx !== undefined && PASS_STRATEGY.parkStrategies[idx]) {
+      const ps = PASS_STRATEGY.parkStrategies[idx];
+      stratContent.innerHTML = `
+        <ol class="strategy-list">${ps.priorities.map((p) => `<li>${p}</li>`).join('')}</ol>
+        <div style="margin-top:6px;font-size:12px;color:#854d0e;font-weight:600;">${ps.shows}</div>
+      `;
+      stratBox.classList.remove('hidden');
+    } else {
+      stratBox.classList.add('hidden');
+    }
+  }
+
   overviewLayerGroup.clearLayers();
   parkLayerGroup.clearLayers();
 
@@ -403,6 +428,23 @@ function openPark(parkId) {
     parkLayerGroup.addLayer(marker);
     rideMarkers[ride.num] = marker;
 
+    const passText = ride.pass || '';
+    let tierLabel = '1티어 · 패스';
+    let tierCls = 'tier-1-pass';
+    if (passText.includes('Single Pass')) {
+      tierLabel = '1티어 · Single Pass';
+      tierCls = 'tier-1-sp';
+    } else if (passText.includes('제외') || passText.includes('오픈런')) {
+      tierLabel = '1티어 · 오픈런(패스제외)';
+      tierCls = 'tier-1-open';
+    } else if (passText.includes('공연') || passText.includes('퍼레이드') || passText.includes('불꽃') || passText.includes('워터쇼')) {
+      tierLabel = '필수 공연 · 쇼';
+      tierCls = 'tier-2-sub';
+    } else if (ride.num >= 5 || passText.includes('2티어') || passText.includes('대기 짧음') || passText.includes('워크스루')) {
+      tierLabel = '2티어 · 서브';
+      tierCls = 'tier-2-sub';
+    }
+
     const card = document.createElement('div');
     card.className = 'ride-card';
     card.innerHTML = `
@@ -411,6 +453,7 @@ function openPark(parkId) {
         <div class="ride-name">${ride.name}</div>
         <div class="ride-en">${ride.enName} · ${ride.land}</div>
         <div class="ride-meta">
+          <span class="tier-badge ${tierCls}">${tierLabel}</span>
           <span class="ride-badge">📏 ${ride.height}</span>
           <span class="ride-badge">🎟️ ${ride.pass}</span>
         </div>
@@ -654,5 +697,59 @@ function renderStayCompareModal() {
     if (e.target === modal) {
       modal.classList.add('hidden');
     }
+  });
+})();
+
+function renderStrategyModal() {
+  const body = document.getElementById('strategy-modal-body');
+  if (!body || typeof PASS_STRATEGY === 'undefined') return;
+
+  const timelineHtml = PASS_STRATEGY.timeline.map((t) => `<li>${t}</li>`).join('');
+  const spHtml = PASS_STRATEGY.singlePassOrder.map((s) => `<li>${s}</li>`).join('');
+  const openRunHtml = PASS_STRATEGY.noPassOpenRun.map((o) => `<li>${o}</li>`).join('');
+  const parksHtml = PASS_STRATEGY.parkStrategies
+    .map(
+      (ps) => `
+      <div class="strategy-card">
+        <h3>${ps.park}</h3>
+        <ol>${ps.priorities.map((p) => `<li>${p}</li>`).join('')}</ol>
+        <p style="margin-top:8px;color:#0369a1;font-weight:600;">${ps.shows}</p>
+      </div>`
+    )
+    .join('');
+
+  body.innerHTML = `
+    <div class="strategy-card" style="background:#eff6ff;border-color:#bfdbfe;">
+      <h3>⏰ 디즈니 3일 전 오전 07:00 알람 타임라인 (Rosen Inn LBV 기준)</h3>
+      <ul>${timelineHtml}</ul>
+    </div>
+    <div class="strategy-card" style="background:#fef2f2;border-color:#fecaca;">
+      <h3>🔥 1티어 Single Pass 별도 구매 우선순위 (Multi Pass 제외 라이드)</h3>
+      <ol>${spHtml}</ol>
+    </div>
+    <div class="strategy-card" style="background:#fff7ed;border-color:#fed7aa;">
+      <h3>🏃 패스 안 먹어서 줄 서서 오픈런해야 하는 라이드</h3>
+      <ul>${openRunHtml}</ul>
+    </div>
+    ${parksHtml}
+  `;
+}
+
+(function bindStrategyModalEvents() {
+  const modal = document.getElementById('strategy-modal');
+  const open1 = document.getElementById('btn-strategy-overview');
+  const open2 = document.getElementById('btn-strategy-park');
+  const closeBtn = document.getElementById('btn-close-strategy');
+  if (!modal || !closeBtn) return;
+
+  const openModal = () => {
+    renderStrategyModal();
+    modal.classList.remove('hidden');
+  };
+  if (open1) open1.addEventListener('click', openModal);
+  if (open2) open2.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.add('hidden');
   });
 })();

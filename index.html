@@ -30,6 +30,9 @@
         <button class="pill" data-filter="marine">🐬 코브·씨월드</button>
         <button class="pill" data-filter="spot">🛍️ 쇼핑·야경·맛집</button>
       </div>
+      <button id="btn-strategy-overview" class="btn-secondary" title="패스·오픈런·공연 전략">
+        🎟️ 패스·공연 전략
+      </button>
       <button id="btn-layer-toggle" class="btn-secondary" title="일반 지도 / 위성 지도 전환">
         🛰️ 위성 지도
       </button>
@@ -38,6 +41,9 @@
     <div class="topbar-controls hidden" id="park-controls">
       <button id="btn-back-overview" class="btn-primary">
         ← 올랜도 전체 지도로 돌아가기
+      </button>
+      <button id="btn-strategy-park" class="btn-secondary">
+        🎟️ 패스·공연 전략
       </button>
       <button id="btn-layer-toggle-park" class="btn-secondary">
         🛰️ 위성 지도
@@ -110,13 +116,32 @@
           <div class="park-tips" id="park-tips"></div>
         </div>
 
+        <div class="strategy-box hidden" id="park-strategy-box">
+          <h3>🎟️ 패스 예약 우선순위 &amp; 오픈런 전략</h3>
+          <div id="park-strategy-content"></div>
+        </div>
+
         <div class="section-header">
-          <h3>⭐ 꼭 가야 하는 어트랙션 (순서대로 클릭)</h3>
+          <h3>⭐ 1티어 필수 &amp; 2티어 서브 어트랙션 (클릭 시 이동)</h3>
         </div>
         <div class="ride-list" id="ride-list"></div>
       </div>
     </aside>
   </main>
+
+  <!-- Strategy Modal -->
+  <div id="strategy-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="strategy-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h2 id="strategy-modal-title">🎟️ 디즈니 · 유니버셜 패스 &amp; 오픈런 공략 전략</h2>
+          <p class="modal-sub">Rosen Inn LBV (외부 숙소) 기준 3일 전 07:00 예약 타임라인 · 1티어/2티어/우선순위 1~5위</p>
+        </div>
+        <button id="btn-close-strategy" class="modal-close" type="button" aria-label="닫기">✕</button>
+      </div>
+      <div class="modal-body" id="strategy-modal-body"></div>
+    </div>
+  </div>
 
   <!-- Disneybound Outfit Modal -->
   <div id="disneybound-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">

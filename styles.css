@@ -1055,3 +1055,63 @@ body {
   color: #475569;
   line-height: 1.45;
 }
+
+.strategy-box {
+  background: #fefce8;
+  border: 1px solid #fde047;
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.strategy-box h3 {
+  font-size: 13px;
+  font-weight: 800;
+  color: #854d0e;
+  margin-bottom: 6px;
+}
+
+.strategy-list {
+  font-size: 12px;
+  color: #713f12;
+  line-height: 1.55;
+  padding-left: 16px;
+}
+
+.tier-badge {
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.tier-1-sp { background: #fee2e2; color: #b91c1c; }
+.tier-1-open { background: #ffedd5; color: #c2410c; }
+.tier-1-pass { background: #ede9fe; color: #6d28d9; }
+.tier-2-sub { background: #dcfce7; color: #15803d; }
+
+.strategy-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.strategy-card h3 {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.strategy-card p,
+.strategy-card li {
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.strategy-card ul,
+.strategy-card ol {
+  padding-left: 18px;
+  margin-top: 6px;
+}
